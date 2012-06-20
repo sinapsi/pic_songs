@@ -20,7 +20,7 @@ void PERset(void);
 void delay_10ms(unsigned char i);
 /*
  *  - set HS + PLL oscillator
- *  - disable watchdog timer
+ *  - disable wathCdog timer
  *  - disable low voltage programming
  */
 
@@ -32,26 +32,57 @@ void delay_10ms(unsigned char i);
 #pragma config BORV  = 42  // Tensione per Brown out Reset 4.2 Volt
 #pragma config PWMPIN = OFF
 
-#define P 0 //pausa
-#define C (3816) //do 262hz
-#define Cd (3609) //do#
-#define D (3400) //re
-#define Dd (3203) //re#
-#define E (3029) //mi
-#define F (2864) //fa
-#define Fd (2702) //fa#
-#define G (2550) //sol
-#define Gd (2408) //sol#
-#define A (2271) //la
-#define Ad (2144) //la#
-#define B (2023) //si
+#define P &notes[0] //pausa
+#define C &notes[1] //do 262hz
+#define Cd &notes[2] //do#
+#define D &notes[3] //re
+#define Dd &notes[4] //re#
+#define E &notes[5] //mi
+#define F &notes[6] //fa
+#define Fd &notes[7] //fa#
+#define G &notes[8] //sol
+#define Gd &notes[9] //sol#
+#define A &notes[10] //la
+#define Ad &notes[11] //la#
+#define B &notes[12] //si
+
+
+#define lC &lnotes[1] //do 262hz
+#define lCd &lnotes[2] //do#
+#define lD &lnotes[3] //re
+#define lDd &lnotes[4] //re#
+#define lE &lnotes[5] //mi
+#define lF &lnotes[6] //fa
+#define lFd &lnotes[7] //fa#
+#define lG &lnotes[8] //sol
+#define lGd &lnotes[9] //sol#
+#define lA &lnotes[10] //la
+#define lAd &lnotes[11] //la#
+#define lB &lnotes[12] //si
+
+#define hC &hnotes[1] //do 262hz
+#define hCd &hnotes[2] //do#
+#define hD &hnotes[3] //re
+#define hDd &hnotes[4] //re#
+#define hE &hnotes[5] //mi
+#define hF &hnotes[6] //fa
+#define hFd &hnotes[7] //fa#
+#define hG &hnotes[8] //sol
+#define hGd &hnotes[9] //sol#
+#define hA &hnotes[10] //la
+#define hAd &hnotes[11] //la#
+#define hB &hnotes[12] //si
+
+int notes[13] = {0, 3816, 3609, 3400, 3203, 3029, 2864, 2702, 2550, 2408, 2271, 2144, 2023};
+int lnotes[13] = {0, 3816*2, 3609*2, 3400*2, 3203*2, 3029*2, 2864*2, 2702*2, 2550*2, 2408*2, 2271*2, 2144*2, 2023*2};
+int hnotes[13] = {0, 3816/2, 3609/2, 3400/2, 3203/2, 3029/2, 2864/2, 2702/2, 2550/2, 2408/2, 2271/2, 2144/2, 2023/2};
 
 
 // variabili globali
 int PWM1=1,PWM2=1,PWM3=1;
 int i=0, j=0;
 int input = 0;
-int PERIODO=1;
+int PERIODO;
 int LUNGHEZZA = 1;
 
 
@@ -62,18 +93,18 @@ int LUNGHEZZA = 1;
 #pragma idata bigdata
 
 #define x 125
-int song[x]=  {B,   A,  B,  A,  B,  C/2,    D/2,    C/2,    B,  A,  E,  A,
-               Fd,  E,  Fd, E, B*2, A*2,    B*2,
-               D,   Cd, B*2,    A*2,    G*2,    A*2,    G*2,    Fd*2,    E*2,
-    /*5*/      Fd*2,    G*2,    A*2,    B*2,    Cd, D,  E,  G,  E,  G,
-               F,   E,  D,  C,  B*2,    C,  A*2,
-    /*9*/      G,   F,  E,  D,  C,      C/2,    B,  A,  G,  D/2,  C/2,    B,  A,  G,
-    /*11*/     B,   A,  D,  E,  Fd,     G,  Fd,  A*2,    G*2,    Fd*2,   G*2,
-    /*12*/     A*2, A*2,    B*2,    D,  Cd,  B*2,    Cd,
-    /*13*/     P,   B*2,    Cd,  D,  E,  Fd,  Gd,  A,  Gd,  Fd,  Cd,  A,
-    /*14*/     Gd,  Fd,  F, Cd,   Cd,  Cd/2,    B,  A,  Gd,  Cd/2,    A/2, Gd/2,
-    /*15*/     Fd,  B*2,    Cd,  D,  E,  Fd,  Gd,  A,  Gd,  Fd,  Cd,  A,
-    /*16*/     Cd/2, D/2,    E/2,    D/2,    Cd/2,    B,  A,  B,  Cd/2,    D/2,    E/2,    Cd/2};
+int * song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
+               Fd,  E,  Fd, E, lB, lA,    lB,
+               D,   Cd, lB,    lA,    lG,    lA,    lG,    lFd,    lE,
+    /*5*/      lFd,    lG,    lA,    lB,    Cd, D,  E,  G,  E,  G,
+               F,   E,  D,  C,  lB,    C,  lA,
+    /*9*/      G,   F,  E,  D,  C,      hC,    B,  A,  G,  hD,  hC,    B,  A,  G,
+    /*11*/     B,   A,  D,  E,  Fd,     G,  Fd,  lA,    lG,    lFd,   lG,
+    /*12*/     lA, lA,    lB,    D,  Cd,  lB,    Cd,
+    /*13*/     P,   lB,    Cd,  D,  E,  Fd,  Gd,  A,  Gd,  Fd,  Cd,  A,
+    /*14*/     Gd,  Fd,  F, Cd,   Cd,  hCd,    B,  A,  Gd,  hCd,    hA, hGd,
+    /*15*/     Fd,  lB,    Cd,  D,  E,  Fd,  Gd,  A,  Gd,  Fd,  Cd,  A,
+    /*16*/     hCd, hD,    hE,    hD,    hCd,    B,  A,  B,  hCd,    hD,    hE,    hCd};
     //*17*/     B,   A,  Gd, Fd,  E,  B,  Fd,  E,  Dd*2 };
 #pragma idata bigdata2
 
@@ -138,7 +169,7 @@ delay_10ms(20);
 while(1){
     for (i=0;i<x;i++){
         //PORTC = ~PORTC;
-        PERIODO = (song[i])/2; //LA alto
+        PERIODO = *(song[i])/2; //LA alto
         PWM1 = PERIODO/3;
         PWM2 = PERIODO/3;
         PWM3 = PERIODO/3;
