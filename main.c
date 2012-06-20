@@ -47,50 +47,50 @@ void delay_10ms(unsigned char i);
 #pragma config BORV  = 42  // Tensione per Brown out Reset 4.2 Volt
 #pragma config PWMPIN = OFF
 
-#define P &notes[0] //pausa
-#define C &notes[1] //do 262hz
-#define Cd &notes[2] //do#
-#define D &notes[3] //re
-#define Dd &notes[4] //re#
-#define E &notes[5] //mi
-#define F &notes[6] //fa
-#define Fd &notes[7] //fa#
-#define G &notes[8] //sol
-#define Gd &notes[9] //sol#
-#define A &notes[10] //la
-#define Ad &notes[11] //la#
-#define B &notes[12] //si
+#define P 0 //pausa
+#define C 1 //do 262hz
+#define Cd 2 //do#
+#define D 3 //re
+#define Dd 4 //re#
+#define E 5 //mi
+#define F 6 //fa
+#define Fd 7 //fa#
+#define G 8 //sol
+#define Gd 9 //sol#
+#define A 10 //la
+#define Ad 11 //la#
+#define B 12 //si
 
 
-#define lC &lnotes[1] //do 262hz
-#define lCd &lnotes[2] //do#
-#define lD &lnotes[3] //re
-#define lDd &lnotes[4] //re#
-#define lE &lnotes[5] //mi
-#define lF &lnotes[6] //fa
-#define lFd &lnotes[7] //fa#
-#define lG &lnotes[8] //sol
-#define lGd &lnotes[9] //sol#
-#define lA &lnotes[10] //la
-#define lAd &lnotes[11] //la#
-#define lB &lnotes[12] //si
+#define lC 1+12 //do 262hz
+#define lCd 2+12 //do#
+#define lD 3+12 //re
+#define lDd 4+12 //re#
+#define lE 5+12 //mi
+#define lF 6+12 //fa
+#define lFd 7+12 //fa#
+#define lG 8+12 //sol
+#define lGd 9+12 //sol#
+#define lA 10+12 //la
+#define lAd 11+12 //la#
+#define lB 12+12 //si
 
-#define hC &hnotes[1] //do 262hz
-#define hCd &hnotes[2] //do#
-#define hD &hnotes[3] //re
-#define hDd &hnotes[4] //re#
-#define hE &hnotes[5] //mi
-#define hF &hnotes[6] //fa
-#define hFd &hnotes[7] //fa#
-#define hG &hnotes[8] //sol
-#define hGd &hnotes[9] //sol#
-#define hA &hnotes[10] //la
-#define hAd &hnotes[11] //la#
-#define hB &hnotes[12] //si
+#define hC 24+1 //do 262hz
+#define hCd 24+2 //do#
+#define hD 24+3 //re
+#define hDd 24+4 //re#
+#define hE 24+5 //mi
+#define hF 24+6 //fa
+#define hFd 24+7 //fa#
+#define hG 24+8 //sol
+#define hGd 24+9 //sol#
+#define hA 24+10 //la
+#define hAd 24+11 //la#
+#define hB 24+12 //si
 
-int notes[13] = {0, 3816, 3609, 3400, 3203, 3029, 2864, 2702, 2550, 2408, 2271, 2144, 2023};
-int lnotes[13] = {0, 3816*2, 3609*2, 3400*2, 3203*2, 3029*2, 2864*2, 2702*2, 2550*2, 2408*2, 2271*2, 2144*2, 2023*2};
-int hnotes[13] = {0, 3816/2, 3609/2, 3400/2, 3203/2, 3029/2, 2864/2, 2702/2, 2550/2, 2408/2, 2271/2, 2144/2, 2023/2};
+int notes[37] = {0, 3816, 3609, 3400, 3203, 3029, 2864, 2702, 2550, 2408, 2271, 2144, 2023,
+3816*2, 3609*2, 3400*2, 3203*2, 3029*2, 2864*2, 2702*2, 2550*2, 2408*2, 2271*2, 2144*2, 2023*2,
+3816/2, 3609/2, 3400/2, 3203/2, 3029/2, 2864/2, 2702/2, 2550/2, 2408/2, 2271/2, 2144/2, 2023/2};
 
 
 // variabili globali
@@ -107,8 +107,8 @@ int LUNGHEZZA = 1;
 // plafone
 #pragma idata bigdata
 
-#define x 125
-int * song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
+#define x 134
+char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
                Fd,  E,  Fd, E, lB, lA,    lB,
                D,   Cd, lB,    lA,    lG,    lA,    lG,    lFd,    lE,
     /*5*/      lFd,    lG,    lA,    lB,    Cd, D,  E,  G,  E,  G,
@@ -119,8 +119,8 @@ int * song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
     /*13*/     P,   lB,    Cd,  D,  E,  Fd,  Gd,  A,  Gd,  Fd,  Cd,  A,
     /*14*/     Gd,  Fd,  F, Cd,   Cd,  hCd,    B,  A,  Gd,  hCd,    hA, hGd,
     /*15*/     Fd,  lB,    Cd,  D,  E,  Fd,  Gd,  A,  Gd,  Fd,  Cd,  A,
-    /*16*/     hCd, hD,    hE,    hD,    hCd,    B,  A,  B,  hCd,    hD,    hE,    hCd};
-    //*17*/     B,   A,  Gd, Fd,  E,  B,  Fd,  E,  Dd*2 };
+    /*16*/     hCd, hD,    hE,    hD,    hCd,    B,  A,  B,  hCd,    hD,    hE,    hCd,
+    /*17*/     B,   A,  Gd, Fd,  E,  B,  Fd,  E,  Dd*2 };
 #pragma idata bigdata2
 
 unsigned char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
@@ -134,8 +134,8 @@ unsigned char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,
     /*13*/     1,   1,      1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
     /*14*/     1,   1,  1,  1,   1,  1,       1,   1,   1,   1,       1,       1,
     /*15*/     1,   1,      1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-    /*16*/     1,   1,      1,  1,  1,  1,  1,  1,  1,  1,  1,  1};
-    //*17*/     1,   1,   1,   1,   1,   1,   2, 2, 2};
+    /*16*/     1,   1,      1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+    /*17*/     1,   1,   1,   1,   1,   1,   2, 2, 2};
 
 
 
@@ -184,7 +184,7 @@ delay_10ms(20);
 while(1){
     for (i=0;i<x;i++){
         //PORTC = ~PORTC;
-        PERIODO = *(song[i])/2; //LA alto
+        PERIODO = notes[song[i]]/2; //LA alto
         PWM1 = PERIODO/3;
         PWM2 = PERIODO/3;
         PWM3 = PERIODO/3;
