@@ -107,7 +107,7 @@ int LUNGHEZZA = 1;
 // plafone
 #pragma idata bigdata1
 
-#define x 422
+#define x 430
 const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
                Fd,  E,  Fd, E, lB, lA,    lB,
                D,   Cd, lB,    lA,    lG,    lA,    lG,    lFd,    lE,
@@ -130,7 +130,7 @@ const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  
     /*26*/     P,   lDd, lGd, Cd,    C,  lAd, lA, lAd, lA, D,  Gd,
     /*27*/     Gd,  Fd, F,  G, Cd,
     /*28*/     P,   Gd, Fd, F,  Dd,  F,  G,  A,  G,  F,  Cd,
-    /*29*/     Dd,   Cd, C,  lAd, lGd,    lDd, Dd,  D,  C,
+    /*29*/     F, Dd,    Cd, C,  lAd, lGd,    lDd, Dd,  D,  C,
     /*30*/     lDd,  lGd,    lAd, Cd, F,  Gd, hC, Ad,  A,  F,  hC,
     /*31*/     hD,  hC, Ad,  hC, G,  Ad,  F,  G,
     /*32*/     E,   C,  G,  hDd, hF, hG,
@@ -139,32 +139,31 @@ const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  
     /*35*/     hFd,  hG, hA, hFd, hD, P,  Fd,  G,  A,  D,
     /*36*/     Fd,   E,  D, Cd, D, G, A, B, A, hD, hD, hE,
     /*37*/     hFd,  hD, hFd, hG, hA, hG, hFd, hE,
-    /*38*/     hFd, F,
+    /*38*/     hFd, hG, hFd, F,
     /*39*/     F,    Fd, Gd,  D,  hCd, hDd, hF, Gd,
     /*40*/     hF,  hFd, hGd,
-    /*41*/     hGd,   hC,   Gd,  hGd, hFd, hDd, hCd,
-    /*42*/     hGd,   hCd,   Gd,  hC, Ad,  Dd,  hC,
-    /*43*/     hCd,  Gd,  Fd,  Gd,  Ad,  hC, hCd,
+    /*41*/     hGd, Gd,  hC,   Gd,  hGd, hFd, hDd, hCd,
+    /*42*/     hGd, Ad,  hCd,   Gd,  hC, Ad,  Dd,  hC,
+    /*43*/     hCd, Ad,  Gd,  Fd,  Gd,  Ad,  hC, hCd,
     //*44*/    hDb,  Gb,  Ab,  Bb,  hDb, Bb,  Db,  Gb,  Db
-    /*44*/     hCd,  Fd,  Gd,  Ad,  hCd, Ad,  Cd,  Ad,  Cd,
+    /*44*/     hCd, Cd,  Ad, Fd,  Gd,  Ad,  hCd, Ad,  Cd,  Ad,  Cd,
     //*45*/    F,   Eb,  Db,  Db,  C,  Db,  Eb,  Db,  C,  lBb, lAb, lBb
     /*45*/     F,   Dd,  Cd,  Cd,  C,  Cd,  Dd,  Cd,  C,  lAd, lGd, lAd,
     //*46*/    G,   Bb,  Eb,  F,  Eb,  D,  F,  Eb,  hD,  hC
     /*46*/     G,   Ad,  Dd,  F,  Dd,  D,  F,  Dd,  hD,  hC,
     /*47*/     F,   A,  hD, hE, hD, hC, hG, hF, hE,
     /*48*/     hD,  G,  hG,  hA,    hG, hF, hD, hA,
-    /*49*/     hA,  hA,  hE, hD, B,
-    /*50*/     hCd,  A,  E,
-    /*51*/     hA,  hE, hCd, B,  hCd,
+    /*49*/     hA,  hF, hA,  hE, hD, hDd, B,
+    /*50*/     hCd, B,  A,  E,
+    /*51*/     hGd,  hE, hCd, B,  hCd,
     /*52*/     A,   C,
-    /*53*/     P,   hE, hCd, B,  hCd,
+    /*53*/     P,   hE, hD, hCd, B,  hCd,
     /*54*/     Gd,  C, Cd,  D,  E,
-    /*55*/     D,   lB, lGd, lFd, lGd,
-    /*56*/     lD,  lG, lG, G,  A,  B, A,
-    /*56*/     lD,  lG, lG, lA, lB, lA, lB, P
+    /*55*/     D,   lB, lA, lGd, lFd, lGd,
+    /*56*/     lD,  lG, lG, G,  A,  B, A
 };
 #pragma idata bigdata2
-const rom char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
+const rom float length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
                5,   1,  5,  1,  10, 1,      1,
                2,   1,  1,      1,      1,      2,      1,      2,      1,
     /*5*/      3,       1,      1,      1,      1,  1,  1,  1,  1,  1,
@@ -182,11 +181,10 @@ const rom char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1
     /*20*/     1,   1,  1,      1,   1,  1,  2,     2,   2,
     /*21*/     1,   1,   1,   1,   1,   1,   2,     2, 2,
     /*22*/     1,   1,  1,  1,  1,  1,  2,  2,  2,
-    /*23*/     4,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  22,
+    /*23*/     4,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  10,
     /*26*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-    /*27*/     2,   1,  1,  4,  4,
     /*28*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-    /*29*/     1,   1,  1,   1,   1,   1,   1,   1,   4,
+    /*29*/     0.5, 0.5,   1,  1,   1,   1,   1,   1,   1,   4,
     /*30*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
     /*31*/     2,   1,  2,  1,  2,  1,  2,  1,
     /*32*/     2,   2,   2,   2,   2,   2,
@@ -195,26 +193,26 @@ const rom char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1
     /*35*/     1,   1,   1,  1,   2,  2,   1,   1, 1,  1,
     /*36*/     1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
     /*37*/     2,   2,  1,  1,  3,  1,  1,  1,
-    /*38*/     6,   6,
+    /*38*/     0.5, 0.5,  5,   6,
     /*39*/     1,   1,  2,  2,  1,  1,  2,  2,
     /*40*/     1,   1,  10,
-    /*41*/     1,   2,  2,  1,  2,  2,  2,
-    /*42*/     1,    2,    2,  1,  2,  2,  2,
-    /*43*/     1,   2,  2,  1,  2,  2,  2,
-    /*44*/     1,   2,  1,  1,  1,  1,  1,  2,  2,
+    /*41*/     0.5, 0.5, 2,  2,  1,  2,  2,  2,
+    /*42*/     0.5, 0.5, 2,    2,  1,  2,  2,  2,
+    /*43*/     0.5, 0.5,  2,  2,  1,  2,  2,  2,
+    /*44*/     0.5, 0.5,   2,  1,  1,  1,  1,  1,  2,  2,
     /*45*/     1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
     /*46*/     1,   1,   1,   1,   1,   1,   1,   1,   2,        2,
     /*47*/     1,   1,   1,   1,   1,   1,   2,        2,        2,
     /*48*/     1,   1,   1,   2,        1,   2,        2,        2,
-    /*49*/     4,   1,             3,             1,   3,
-    /*50*/     1,   1,   10,
-    /*51*/     4,   1,  5,  1,  1,
+    /*49*/     4,   0.5, 0.5,            3,    0.5, 0.5,   3,
+    /*50*/     0.5, 0.5,   1,   10,
+    /*51*/     4,   0.5, 0.5,  5,  1,  1,
     /*52*/     2,   10,
-    /*53*/     4,   1,  5,  1,  1,
+    /*53*/     4,   0.5, 0.5,  5,  1,  1,
     /*54*/     2,   4,  2,  2,  2,
-    /*55*/     4,   1,  5,   1,  1,
-    /*56*/     2,   4,  3,  2,  1, 12,
-    /*56*/     2,   4,  3,  2,  1, 12, 24};
+    /*55*/     4,   0.5, 0.5,  5,   1,  1,
+    /*56*/     2,   4,  3,  2,  1, 12
+};
 
 
 
@@ -262,10 +260,9 @@ PTPERH = 0xDF;
 
 /* fine attivazione modulo PWM */
 
-delay_10ms(20);
+delay_10ms(100);
 while(1){
     for (i=0;i<x;i++){
-        //PORTC = ~PORTC;
         PERIODO = notes[song[i]]/2; //LA alto
         PWM1 = PERIODO/3;
         PWM2 = PERIODO/3;
@@ -273,14 +270,16 @@ while(1){
         PERset();
         PWMset();
         LUNGHEZZA = length[i]*2;
-        for (j=0; j<LUNGHEZZA; j++){
+        
+        for (j=0; j<LUNGHEZZA; j++){  
             delay_10ms(4);
-            cont+=8000/(PERIODO+1);
-            //if(cont>12){
-                PORTC = ~PORTC;
-                cont = 0;
-            //}
+            cont+=4000/(PERIODO+1);
         }
+        
+        //if(cont>5 || LUNGHEZZA <= 1 || PERIODO < (3816/4)){
+        PORTC = ~PORTC;
+                cont = 0;
+        //}
         //if (PERIODO !=1)
         //    PORTC = ~PORTC;
         PWM1 = 0;
@@ -288,10 +287,17 @@ while(1){
         PWM3 = 0;
         PERset();
         PWMset();
-        //delay_10ms(1);
 
         
     }
+
+    PORTC = 0;
+    PWM1 = 0;
+    PWM2 = 0;
+    PWM3 = 0;
+    PERset();
+    PWMset();
+    delay_10ms(100);
 
 
 
