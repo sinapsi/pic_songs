@@ -107,7 +107,7 @@ int LUNGHEZZA = 1;
 // plafone
 #pragma idata bigdata1
 
-#define x 166
+#define x 414
 const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
                Fd,  E,  Fd, E, lB, lA,    lB,
                D,   Cd, lB,    lA,    lG,    lA,    lG,    lFd,    lE,
@@ -124,10 +124,47 @@ const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  
     /*18*/     Cd,   Fd,  F,  Fd,  Cd,  lAd, lGd, Cd,  Fd,  Gd,  hDd,
     /*19*/     hCd,  Gd,  hDd,
     /*20*/     hF,  hDd, hCd, Gd,  hFd, hGd, hF, hCd, Gd,
-    /*21*/     hFd,  hF, hDd, hCd, hFd, hFd, hFd, hDd, hC};
-
+    /*21*/     hFd,  hF, hDd, hCd, hFd, hGd, hGd, hDd, hC,
+    /*22*/     hD,  hDd, hF, Ad,  F,  Dd,  D,  C, lAd,
+    /*23*/     lF,  lF, lAd, C,  D,  F,  Ad,  hD, Ad, hC, Gd, P,
+    /*26*/     P,   lDd, lGd, Cd,    C,  lAd, lA, lAd, lA, D,  Gd,
+    /*27*/     Gd,  Fd, F,  G, Cd,
+    /*28*/     P,   Gd, Fd, F,  Dd,  F,  G,  A,  G,  F,  Cd,
+    /*29*/     Dd,   Cd, C,  lAd, lGd,    lDd, Dd,  D,  C,
+    /*30*/     lDd,  lGd,    lAd, Cd, F,  Gd, hC, Ad,  A,  F,  hC,
+    /*31*/     hD,  hC, Ad,  hC, G,  Ad,  F,  G,
+    /*32*/     E,   C,  G,  hDd, hF, hG,
+    /*33*/     hF, hDd, hD, hC, Ad,  A,  Ad, F,   Ad,  hC,
+    /*34*/     hD,  hC, Ad,  A,  Ad,  hC,  hD,
+    /*35*/     hFd,  hG, hA, hFd, hD, P,  Fd,  G,  A,  D,
+    /*36*/     Fd,   E,  D, Cd, D, G, A, B, A, hD, hD, hE,
+    /*37*/     hFd,  hD, hFd, hG, hA, hG, hFd, hE,
+    /*38*/     hFd, F,
+    /*39*/     F,    Fd, Gd,  D,  hCd, hDd, hF, Gd,
+    /*40*/     hF,  hFd, hGd,
+    /*41*/     hGd,   hC,   Gd,  hGd, hFd, hDd, hCd,
+    /*42*/     hGd,   hCd,   Gd,  hC, Ad,  Dd,  hC,
+    /*43*/     hCd,  Gd,  Fd,  Gd,  Ad,  hC, hCd,
+    //*44*/    hDb,  Gb,  Ab,  Bb,  hDb, Bb,  Db,  Gb,  Db
+    /*44*/     hCd,  Fd,  Gd,  Ad,  hCd, Ad,  Cd,  Ad,  Cd,
+    //*45*/    F,   Eb,  Db,  Db,  C,  Db,  Eb,  Db,  C,  lBb, lAb, lBb
+    /*45*/     F,   Dd,  Cd,  Cd,  C,  Cd,  Dd,  Cd,  C,  lAd, lGd, lAd,
+    //*46*/    G,   Bb,  Eb,  F,  Eb,  D,  F,  Eb,  hD,  hC
+    /*46*/     G,   Ad,  Dd,  F,  Dd,  D,  F,  Dd,  hD,  hC,
+    /*47*/     F,   A,  hD, hE, hD, hC, hG, hF, hE,
+    /*48*/     hD,  G,  hG,  hA,    hG, hF, hD, hA,
+    /*49*/     hA,  hA,  hE, hD, B,
+    /*50*/     hCd,  A,  E,
+    /*51*/     hA,  hE, hCd, B,  hCd,
+    /*52*/     A,   C,
+    /*53*/     P,   hE, hCd, B,  hCd,
+    /*54*/     Gd,  C, Cd,  D,  E,
+    /*55*/     D,   lB, lGd, lFd, lGd,
+    /*56*/     lD,  lG, lG, G,  A,  B, A
+    //*56*/     lD,  lG, lG, lA, lB, lA, lB
+};
 #pragma idata bigdata2
-unsigned char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
+const rom char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
                5,   1,  5,  1,  10, 1,      1,
                2,   1,  1,      1,      1,      2,      1,      2,      1,
     /*5*/      3,       1,      1,      1,      1,  1,  1,  1,  1,  1,
@@ -143,7 +180,40 @@ unsigned char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,
     /*18*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
     /*19*/     8,   2,  2,
     /*20*/     1,   1,  1,      1,   1,  1,  2,     2,   2,
-    /*21*/     1,   1,   1,   1,   1,   1,   2,     2, 2};
+    /*21*/     1,   1,   1,   1,   1,   1,   2,     2, 2,
+    /*22*/     1,   1,  1,  1,  1,  1,  2,  2,  2,
+    /*23*/     4,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  22,
+    /*26*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+    /*27*/     2,   1,  1,  4,  4,
+    /*28*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+    /*29*/     1,   1,  1,   1,   1,   1,   1,   1,   4,
+    /*30*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+    /*31*/     2,   1,  2,  1,  2,  1,  2,  1,
+    /*32*/     2,   2,   2,   2,   2,   2,
+    /*33*/     1,   1,   1,   1,   1,   1,   2,    2,  1,   1,
+    /*34*/     1,   1,  1,  1,  1,  1,  6,
+    /*35*/     1,   1,   1,  1,   2,  2,   1,   1, 1,  1,
+    /*36*/     1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
+    /*37*/     2,   2,  1,  1,  3,  1,  1,  1,
+    /*38*/     6,   6,
+    /*39*/     1,   1,  2,  2,  1,  1,  2,  2,
+    /*40*/     1,   1,  10,
+    /*41*/     1,   2,  2,  1,  2,  2,  2,
+    /*42*/     1,    2,    2,  1,  2,  2,  2,
+    /*43*/     1,   2,  2,  1,  2,  2,  2,
+    /*44*/     1,   2,  1,  1,  1,  1,  1,  2,  2,
+    /*45*/     1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
+    /*46*/     1,   1,   1,   1,   1,   1,   1,   1,   2,        2,
+    /*47*/     1,   1,   1,   1,   1,   1,   2,        2,        2,
+    /*48*/     1,   1,   1,   2,        1,   2,        2,        2,
+    /*49*/     4,   1,             3,             1,   3,
+    /*50*/     1,   1,   10,
+    /*51*/     4,   1,  5,  1,  1,
+    /*52*/     2,   10,
+    /*53*/     4,   1,  5,  1,  1,
+    /*54*/     2,   4,  2,  2,  2,
+    /*55*/     4,   1,  5,   1,  1,
+    /*56*/     2,   4,  3,  2,  1, 12};
 
 
 
