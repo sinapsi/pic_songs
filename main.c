@@ -97,7 +97,7 @@ int notes[37] = {0, 3816, 3609, 3400, 3203, 3029, 2864, 2702, 2550, 2408, 2271, 
 int PWM1=1,PWM2=1,PWM3=1;
 int i=0, j=0;
 int input = 0;
-int PERIODO;
+int PERIODO = 1;
 int LUNGHEZZA = 1;
 
 
@@ -107,7 +107,7 @@ int LUNGHEZZA = 1;
 // plafone
 #pragma idata bigdata1
 
-#define x 414
+#define x 422
 const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
                Fd,  E,  Fd, E, lB, lA,    lB,
                D,   Cd, lB,    lA,    lG,    lA,    lG,    lFd,    lE,
@@ -160,8 +160,8 @@ const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  
     /*53*/     P,   hE, hCd, B,  hCd,
     /*54*/     Gd,  C, Cd,  D,  E,
     /*55*/     D,   lB, lGd, lFd, lGd,
-    /*56*/     lD,  lG, lG, G,  A,  B, A
-    //*56*/     lD,  lG, lG, lA, lB, lA, lB
+    /*56*/     lD,  lG, lG, G,  A,  B, A,
+    /*56*/     lD,  lG, lG, lA, lB, lA, lB, P
 };
 #pragma idata bigdata2
 const rom char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
@@ -213,11 +213,12 @@ const rom char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1
     /*53*/     4,   1,  5,  1,  1,
     /*54*/     2,   4,  2,  2,  2,
     /*55*/     4,   1,  5,   1,  1,
-    /*56*/     2,   4,  3,  2,  1, 12};
+    /*56*/     2,   4,  3,  2,  1, 12,
+    /*56*/     2,   4,  3,  2,  1, 12, 24};
 
 
 
-
+char cont=0;
 void main()
 {
 
@@ -239,9 +240,9 @@ INTCON = 0;     // disattiva tutti gli interrupt
 /* inizio attivazione modulo PWM */
 // RB1 (PWM1),RB3(PWM3),RB4(PWM5) PWM out
 //PTCON0  = 0b00000000;  // 1:1 postscaler, 1:1 prescale, free running mode
-PTCON0  = 0b00000100;  // 1:1 postscaler, 1:4 prescale, free running mode
+//PTCON0  = 0b00000100;  // 1:1 postscaler, 1:4 prescale, free running mode
 
-//PTCON0  = 0b00001000;  // 1:1 postscaler, 1:16 prescale, free running mode
+PTCON0  = 0b00001000;  // 1:1 postscaler, 1:16 prescale, free running mode
 PTCON1  = 0b10000000;  // PWM time base ON, count up
 PWMCON0 = 0b01110111;  // PWM1,PWM3,PWM5 abilitati in modo singolo
 PWMCON1 = 0b00000000;  // 1:1 postscaler
@@ -271,19 +272,23 @@ while(1){
         PWM3 = PERIODO/3;
         PERset();
         PWMset();
-        LUNGHEZZA = length[i];
-        
+        LUNGHEZZA = length[i]*2;
         for (j=0; j<LUNGHEZZA; j++){
             delay_10ms(4);
+            cont+=8000/(PERIODO+1);
+            //if(cont>12){
+                PORTC = ~PORTC;
+                cont = 0;
+            //}
         }
-        if (PERIODO !=1)
-            PORTC = ~PORTC;
+        //if (PERIODO !=1)
+        //    PORTC = ~PORTC;
         PWM1 = 0;
         PWM2 = 0;
         PWM3 = 0;
         PERset();
         PWMset();
-        delay_10ms(2);
+        //delay_10ms(1);
 
         
     }
@@ -325,3 +330,4 @@ void delay_10ms(unsigned char i){
   for (dElAy = 0; dElAy < i; dElAy++)
       Delay1KTCYx(100);
 }
+
