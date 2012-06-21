@@ -105,9 +105,9 @@ int LUNGHEZZA = 1;
 
 
 // plafone
-#pragma idata bigdata
+#pragma idata bigdata1
 
-#define x 134
+#define x 157
 char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
                Fd,  E,  Fd, E, lB, lA,    lB,
                D,   Cd, lB,    lA,    lG,    lA,    lG,    lFd,    lE,
@@ -120,9 +120,13 @@ char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
     /*14*/     Gd,  Fd,  F, Cd,   Cd,  hCd,    B,  A,  Gd,  hCd,    hA, hGd,
     /*15*/     Fd,  lB,    Cd,  D,  E,  Fd,  Gd,  A,  Gd,  Fd,  Cd,  A,
     /*16*/     hCd, hD,    hE,    hD,    hCd,    B,  A,  B,  hCd,    hD,    hE,    hCd,
-    /*17*/     B,   A,  Gd, Fd,  E,  B,  Fd,  E,  Dd*2 };
-#pragma idata bigdata2
+    /*17*/     B,   A,  Gd, Fd,  E,  B,  Fd,  E,  Dd,
+    /*18*/     Cd,   Fd,  F,  Fd,  Cd,  lAd, lGd, Cd,  Fd,  Gd,  hDd,
+    /*19*/     hCd,  Gd,  hDd,
+    /*20*/     hF,  hDd, hCd, Gd,  hFd, hGd, hF, hCd, Gd};
+    //*21*/     hFd,  hF, hDd, hCd, hFd, hFd, hFd, hDd, hC};
 
+#pragma idata bigdata2
 unsigned char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
                5,   1,  5,  1,  10, 1,      1,
                2,   1,  1,      1,      1,      2,      1,      2,      1,
@@ -135,12 +139,19 @@ unsigned char length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,
     /*14*/     1,   1,  1,  1,   1,  1,       1,   1,   1,   1,       1,       1,
     /*15*/     1,   1,      1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
     /*16*/     1,   1,      1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-    /*17*/     1,   1,   1,   1,   1,   1,   2, 2, 2};
+    /*17*/     1,   1,   1,   1,   1,   1,   2, 2, 2,
+    /*18*/     2,   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+    /*19*/     8,   2,  2,
+    /*20*/     1,   1,  1,      1,   1,  1,  2,     2,   2};
+    //*21*/     1,   1,   1,   1,   1,   1,   2,     2, 2};
+
 
 
 
 void main()
 {
+
+    
 PORTA = 0x00;
 PORTB = 0x00;
 //PORTC = 0x00;
