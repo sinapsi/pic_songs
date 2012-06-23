@@ -62,7 +62,7 @@ void delay_10ms(unsigned char i);
 #define B 12 //si
 
 
-#define lC 1+12 //do 262hz
+#define lC 1+12 //do 
 #define lCd 2+12 //do#
 #define lD 3+12 //re
 #define lDd 4+12 //re#
@@ -75,7 +75,7 @@ void delay_10ms(unsigned char i);
 #define lAd 11+12 //la#
 #define lB 12+12 //si
 
-#define hC 24+1 //do 262hz
+#define hC 24+1 //do 
 #define hCd 24+2 //do#
 #define hD 24+3 //re
 #define hDd 24+4 //re#
@@ -292,7 +292,7 @@ while(1){
         PWM3 = 0;
         PERset();
         PWMset();
-        delay_10ms(0.1);
+        delay_10ms(1);
 
         }
         cont += 1;
