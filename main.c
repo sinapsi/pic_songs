@@ -107,8 +107,8 @@ int LUNGHEZZA = 1;
 // plafone
 #pragma idata bigdata1
 
-#define x 430
-const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
+#define x 428
+const rom char song[x]=  {A,   B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  A,
                Fd,  E,  Fd, E, lB, lA,    lB,
                D,   Cd, lB,    lA,    lG,    lA,    lG,    lFd,    lE,
     /*5*/      lFd,    lG,    lA,    lB,    Cd, D,  E,  G,  E,  G,
@@ -163,7 +163,7 @@ const rom char song[x]=  {B,   A,  B,  A,  B,  hC,    hD,    hC,    B,  A,  E,  
     /*56*/     lD,  lG, lG, G,  A,  B, A
 };
 #pragma idata bigdata2
-const rom float length[x]={5,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
+const rom float length[x]={0.5,  4,   1,  9,  1,  1,  1,      1,      1,      1,  1,  1,  1,
                5,   1,  5,  1,  10, 1,      1,
                2,   1,  1,      1,      1,      2,      1,      2,      1,
     /*5*/      3,       1,      1,      1,      1,  1,  1,  1,  1,  1,
@@ -267,19 +267,24 @@ while(1){
         PWM1 = PERIODO/3;
         PWM2 = PERIODO/3;
         PWM3 = PERIODO/3;
+        LUNGHEZZA = length[i]*2;
+
+
         PERset();
         PWMset();
-        LUNGHEZZA = length[i]*2;
+        //cambia direzione se c'è stata una nota lunga o acuta
+        if(LUNGHEZZA>1){
+            PORTC = ~PORTC;
+        }
         
         for (j=0; j<LUNGHEZZA; j++){  
             delay_10ms(4);
-            cont+=4000/(PERIODO+1);
+            //cont+=4000/(PERIODO+1);
+
         }
-        
-        //if(cont>5 || LUNGHEZZA <= 1 || PERIODO < (3816/4)){
-        PORTC = ~PORTC;
-                cont = 0;
-        //}
+
+        //se ho fatto tanta strada, torno indietro
+
         //if (PERIODO !=1)
         //    PORTC = ~PORTC;
         PWM1 = 0;
@@ -287,7 +292,10 @@ while(1){
         PWM3 = 0;
         PERset();
         PWMset();
+        delay_10ms(0.1);
 
+        }
+        cont += 1;
         
     }
 
@@ -301,7 +309,7 @@ while(1){
 
 
 
-}
+
 }
 /****************** fine Main ****************/
 
